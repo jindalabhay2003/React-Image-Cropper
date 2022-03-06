@@ -2,8 +2,6 @@ import UploadFileIcon from '@mui/icons-material/UploadFile';
 import {Box, Typography} from "@mui/material"
 import { makeStyles } from '@mui/styles';
 import { useRef, useState, useEffect } from 'react';
-import { Dialog } from '@mui/material';
-import DialogCrop from './DialogCrop';
 import ImageCropDialog from './ImageCropDialog';
 import "../App.css"
 
