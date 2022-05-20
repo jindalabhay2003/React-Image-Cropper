@@ -5,6 +5,7 @@ import { useRef, useState, useEffect } from 'react';
 import ImageCropDialog from './ImageCropDialog';
 import "../App.css"
 
+
 const useStyles = makeStyles({
     container:{
     },
@@ -39,13 +40,13 @@ const useStyles = makeStyles({
 })
 
 
-const TicketImage = ()=> {
+const TicketImage = ({croppedImage,setCroppedImage})=> {
 
     const classes = useStyles();
     const FileUploadRef = useRef();
 
   const [imageToCrop, setImageToCrop] = useState(undefined);
-  const [croppedImage, setCroppedImage] = useState(null);
+//   const [croppedImage, setCroppedImage] = useState(null);
   const [dialogOpen,setDialogOpen] = useState(false);
 
   const onUploadFile = (event) => {
@@ -75,7 +76,7 @@ const OnCancel =()=>{
     return (
         <Box>
         {
-         croppedImage!=null?<Box style={{position: "relative"}} > <img style={{maxWidth: "495px",maxHeight: "280px" }} src={croppedImage}/> <h6 className='check' >Helooo</h6> </Box>:
+         croppedImage!=null?<Box style={{position: "relative"}} >  <img style={{maxWidth: "495px",maxHeight: "280px" }} src={croppedImage}/> <h6 className='check' >Helooo</h6> </Box>:
         <Box className={classes.container}>
             <Box className={classes.IconClass}>
             <UploadFileIcon onClick={(event)=>{
@@ -96,6 +97,7 @@ const OnCancel =()=>{
             {/* {
                 croppedImage && <Box> <img style={{maxWidth: "495px",maxHeight: "280px"}} src={croppedImage}/> </Box>
             } */}
+            
         </Box>
         }
         </Box>

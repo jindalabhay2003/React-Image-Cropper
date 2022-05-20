@@ -1,5 +1,7 @@
 import {Box, Typography, Paper} from "@mui/material";
 import { makeStyles } from "@mui/styles";
+import { useState } from "react";
+import Button from '@mui/material/Button';
 
 // Components
 import TicketImage from "./TicketImage";
@@ -23,19 +25,26 @@ const useStyles  = makeStyles({
         alignItems: 'center',
         justifyContent: 'center'
     },
-    middlecomponent:{
-        // borderLeft: `1px solid black`,
-        width: '25%',
-        height: '100%'
-    },
-    thirdcomponent:{
-        borderLeft: `1px solid rgba(0,0,0,0.14)`,
-        width: '25%',
-        height: "100%"
+    // middlecomponent:{
+    //     // borderLeft: `1px solid black`,
+    //     width: '25%',
+    //     height: '100%'
+    // },
+    secondcomponent:{
+        borderLeft: `1px solid black`,
+        width: '50%',
+        height: "100%",
+        fontFamily: "Cursive",
+        fontSize: "40px",
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center'
     }
 })
 
 const Ticket =()=> {
+
+    const [croppedImage, setCroppedImage] = useState(null);
 
     const classes = useStyles();
 
@@ -54,14 +63,17 @@ const Ticket =()=> {
       <Paper elevation={6} >
           <Box className={classes.component}>
               <Box className={classes.firstcomponent}>
-                  <TicketImage />
+                  <TicketImage croppedImage={croppedImage} setCroppedImage={setCroppedImage} />
                   {/* <FileUploadComponent /> */}
               </Box>
-              <Box className={classes.middlecomponent}>
-                  Abhay
+              <Box className={classes.secondcomponent} >
+              {    
+              croppedImage==null?<Typography style={{fontWeight: '800',fontFamily: 'cursive',fontSize: '22px'}} > 👈 Your cropped Image will appear here</Typography>:
+              <Box>
+                  <Typography style={{fontWeight: '800',fontFamily: 'cursive',fontSize: '24px'}} > Your Cropped Image is Ready 😊</Typography>
+                  <a style={{textDecorationLine: 'none'}} href={croppedImage} download><Button variant="contained">Click here to download</Button></a>
               </Box>
-              <Box className={classes.thirdcomponent}>
-                  Jindal
+              }
               </Box>
           </Box>
       </Paper>
